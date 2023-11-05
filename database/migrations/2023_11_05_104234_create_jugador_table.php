@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('jugador', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('password');
+            $table->integer('partidasJugadas')->default(0);
+            $table->integer('partidasGanadas')->default(0);        
             $table->integer('score')->default(0);
             $table->timestamps();
         });
