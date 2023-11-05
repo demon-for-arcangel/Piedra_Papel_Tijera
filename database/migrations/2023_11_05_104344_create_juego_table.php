@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('juego', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ganador_id')->nullable()->constrained('jugador');
+            $table->foreignId('jugador_id')->nullable()->constrained('jugador');
+            $table->boolean('ganada')->default(false);
             $table->timestamps();
         });
     }

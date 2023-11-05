@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('password');
-            $table->integer('partidasJugadas')->default(0);
-            $table->integer('partidasGanadas')->default(0);        
-            $table->integer('score')->default(0);
+            $table->string('rol');
             $table->timestamps();
         });
     }
