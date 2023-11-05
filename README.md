@@ -47,21 +47,60 @@ El proyecto incluye las siguientes características:
   - Método: GET
   - Ruta: `/api/jugadores`
   - Descripción: Obtiene una lista de todos los jugadores registrados.
+  - Ejemplo de respuesta JSON.
+  ```json
+    [
+        {
+            "id": 1,
+            "nombre": "Jugador1",
+            "partidasJugadas": 10,
+            "partidasGanadas": 5,
+            "rol": "jugador"
+        },
+        {
+            "id": 2,
+            "nombre": "Jugador2",
+            "partidasJugadas": 8,
+            "partidasGanadas": 3,
+            "rol": "jugador"
+        }
+    ]
+  ```
 
 - **Obtener Jugador por ID**
   - Método: GET
   - Ruta: `/api/jugadores/{id}`
   - Descripción: Obtiene información detallada de un jugador específico según su ID.
+  - Ejemplo de respuesta JSON.
+  ```json
+    {
+        "id": 1,
+        "nombre": "Jugador1",
+        "partidasJugadas": 10,
+        "partidasGanadas": 5,
+        "rol": "jugador"
+    }
+  ```
 
 - **Registrar Nuevo Jugador**
   - Método: POST
   - Ruta: `/api/jugadores`
   - Descripción: Registra un nuevo jugador en la base de datos.
+  - Ejemplo de respuesta JSON.
+  ```json
+    {
+        "nombre": "NuevoJugador",
+        "partidasJugadas": 0,
+        "partidasGanadas": 0,
+        "rol": "jugador"
+    }
+  ```
 
 - **Eliminar Jugador**
   - Método: DELETE
   - Ruta: `/api/jugadores/{id}`
   - Descripción: Elimina un jugador según su ID.
+  - No se requiere un cuerpo de solicitud JSON para esta acción.
 
 ## Juegos
 
@@ -69,16 +108,58 @@ El proyecto incluye las siguientes características:
   - Método: POST
   - Ruta: `/api/juegos`
   - Descripción: Inicia un nuevo juego.
+  - Ejemplo de respuesta JSON.
+  ```json
+    {
+        "id": 1,
+        "jugador1_id": 1,
+        "jugador2_id": 2,
+        "ganador_id": null,
+        "created_at": "2023-11-05T12:34:56.000000Z",
+        "updated_at": "2023-11-05T12:34:56.000000Z"
+    }
+  ```
 
 - **Hacer Movimiento**
   - Método: POST
   - Ruta: `/api/juegos/{id}/movimientos`
   - Descripción: Realiza un movimiento (piedra, papel o tijera) en un juego existente.
+  - Ejemplo de cuerpo de la solicitud JSON.
+  ```json
+    {
+        "jugador_id": 1,
+        "movimiento": "papel"
+    }
+  ```
+  - Ejemplo de respuesta JSON.
+  ```json
+    {
+        "id": 1,
+        "juego_id": 1,
+        "jugador_id": 1,
+        "movimiento": "papel",
+        "created_at": "2023-11-05T13:45:12.000000Z",
+        "updated_at": "2023-11-05T13:45:12.000000Z"
+    }
+  ```
 
 - **Determinar Ganador**
   - Método: GET
   - Ruta: `/api/juegos/{id}/ganador`
   - Descripción: Determina el ganador de un juego específico según los movimientos realizados.
+    - Ejemplo de respuesta JSON cuando el juego aun no tiene ganador.
+  ```json
+    {
+        "mensaje": "El juego aún no tiene un ganador"
+    }
+  ```
+  - Ejemplo de respuesta JSON cuando hay un ganador.
+  ```json
+    {
+        "ganador_id": 1,
+        "mensaje": "El Jugador 1 ha ganado el juego"
+    }
+  ```
 
 ## Movimientos
 
@@ -86,11 +167,20 @@ El proyecto incluye las siguientes características:
   - Método: GET
   - Ruta: `/api/movimientos`
   - Descripción: Obtiene una lista de todos los movimientos disponibles (piedra, papel o tijera).
-
-### Contribuciones
-
-Si encuentras algún problema o quieres contribuir, siéntete libre de abrir un issue o enviar un pull request.
-
-### Licencia
-
-Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
+  - Ejemplo de respuesta JSON.
+  ```json
+    [
+        {
+            "id": 1,
+            "nombre": "piedra"
+        },
+        {
+            "id": 2,
+            "nombre": "papel"
+        },
+        {
+            "id": 3,
+            "nombre": "tijera"
+        }
+    ]
+```
