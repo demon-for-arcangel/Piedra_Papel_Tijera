@@ -29,8 +29,8 @@ Route::delete('/jugadores/{id}', [JugadorController::class, 'eliminarJugador']);
 
 // Rutas de Juego
 Route::post('/juegos', [JuegoController::class, 'iniciarJuego']);
-Route::post('/juegos/{id}/movimientos', [JuegoController::class, 'hacerMovimiento']);
-Route::get('/juegos/{id}/ganador', [JuegoController::class, 'determinarGanador']);
+Route::post('/juegos/movimientos', [JuegoController::class, 'hacerMovimiento']);
+Route::get('/juegos/ganador', [JuegoController::class, 'determinarGanador']);
 
 // Rutas de Movimiento
 Route::get('/movimientos', function (){ 

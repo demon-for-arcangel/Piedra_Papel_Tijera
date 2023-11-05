@@ -2,7 +2,18 @@
 
 ## Introducción
 
-Este proyecto consiste en una API desarrollada en PHP utilizando el framework Laravel para el juego de Piedra, Papel o Tijera. La API proporciona endpoints para realizar diversas acciones, como registrar jugadores, iniciar juegos, realizar movimientos y determinar ganadores.
+Este proyecto consiste en una API desarrollada en PHP utilizando el framework Laravel para el juego de Piedra, Papel o Tijera. La API te permite jugar el juego de Piedra, Papel y Tijera contra la máquina.
+
+La API implementa la lógica básica de Piedra, Papel y Tijera.
+- Piedra gana contra Tijera.
+- Tijera gana contra Papel.
+- Papel gana contra Piedra.
+
+Cuando se realiza un movimiento, la máquina también realiza su movimiento de forma aleatoria.
+
+## Protección de Rutas
+REVISIÓN
+La API utiliza un Middleware para verificar la autenticación del usuario antes de acceder a ciertas rutas.
 
 ## Tecnologías Utilizadas
 
@@ -64,6 +75,9 @@ El proyecto incluye las siguientes características:
             "partidasGanadas": 3,
             "rol": "jugador"
         }
+        {
+
+        }
     ]
   ```
 
@@ -86,6 +100,7 @@ El proyecto incluye las siguientes características:
   - Método: POST
   - Ruta: `/api/jugadores`
   - Descripción: Registra un nuevo jugador en la base de datos.
+  - Campos Requeridos: `nombre`, `password`, `rol`.
   - Ejemplo de cuerpo de la solicitud JSON.
   ```json
     {
@@ -95,11 +110,17 @@ El proyecto incluye las siguientes características:
     }
   ```
 
+- **Actualizar Jugador**
+  - Método: PUT
+  - Ruta `/api/jugadores/{id}`
+  - Descripción: Actualiza la información de un jugador.
+  - Campos Requeridos: `nombre`, `password`, `rol`. 
+
 - **Eliminar Jugador**
   - Método: DELETE
   - Ruta: `/api/jugadores/{id}`
   - Descripción: Elimina un jugador según su ID.
-  - No se requiere un cuerpo de solicitud JSON para esta acción.
+  - No se requiere un cuerpo de solicitud JSON para esta acción. Tampoco nos dará una respuesta
 
 ## Juegos
 
@@ -121,8 +142,9 @@ El proyecto incluye las siguientes características:
 
 - **Hacer Movimiento**
   - Método: POST
-  - Ruta: `/api/juegos/{id}/movimientos`
+  - Ruta: `/api/juegos/movimientos`
   - Descripción: Realiza un movimiento (piedra, papel o tijera) en un juego existente.
+  - Campos Requeridos: `jugador_id`, `movimiento` (piedra, papel o tijera).
   - Ejemplo de cuerpo de la solicitud JSON.
   ```json
     {
