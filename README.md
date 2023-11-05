@@ -183,4 +183,4 @@ El proyecto incluye las siguientes características:
             "nombre": "tijera"
         }
     ]
-```
+    ```
