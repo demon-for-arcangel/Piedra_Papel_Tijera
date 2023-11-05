@@ -86,7 +86,7 @@ El proyecto incluye las siguientes características:
   - Método: POST
   - Ruta: `/api/jugadores`
   - Descripción: Registra un nuevo jugador en la base de datos.
-  - Ejemplo de respuesta JSON.
+  - Ejemplo de cuerpo de la solicitud JSON.
   ```json
     {
         "nombre": "NuevoJugador",

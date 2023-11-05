@@ -5,8 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Jugador extends Model
 {
+    protected $table = 'jugador';
+
     public function movimientos(){
         return $this->hasMany(Movimiento::class);
     }
