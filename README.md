@@ -1,16 +1,16 @@
-## Proyecto de Piedra, Papel o Tijera con Laravel
+# Proyecto de Piedra, Papel o Tijera con Laravel
 
-### Introducción
+## Introducción
 
 Este proyecto consiste en una API desarrollada en PHP utilizando el framework Laravel para el juego de Piedra, Papel o Tijera. La API proporciona endpoints para realizar diversas acciones, como registrar jugadores, iniciar juegos, realizar movimientos y determinar ganadores.
 
-### Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 - PHP 7.4
 - Laravel 8
 - Composer (para la gestión de dependencias)
 
-### Estructura de la Base de Datos
+## Estructura de la Base de Datos
 
 El proyecto utiliza una base de datos MySQL con las siguientes tablas:
 
@@ -18,11 +18,10 @@ El proyecto utiliza una base de datos MySQL con las siguientes tablas:
 - `juegos`: Registra la información de cada juego, incluyendo los jugadores involucrados y el resultado.
 - `movimientos`: Contiene los tipos de movimientos posibles en el juego (piedra, papel o tijera).
 
-### Funcionalidades Implementadas
+## Funcionalidades Implementadas
 
 El proyecto incluye las siguientes características:
 
-- Registro de Jugadores
 - Inicio de Juegos
 - Realización de Movimientos
 - Determinación de Ganadores
@@ -30,19 +29,19 @@ El proyecto incluye las siguientes características:
 - Listado de Movimientos
 - Eliminación de Jugadores
 
-### Cómo Ejecutar el Proyecto
+## Cómo Ejecutar el Proyecto
 
-1. Clona el repositorio: `git clone https://github.com/tuusuario/tuprojecto.git`
+1. Clona el repositorio: `git clone https://github.com/demon-for-arcangel/Piedra_papel_tijera.git`
 2. Instala las dependencias: `composer install`
-3. Copia el archivo de configuración de entorno: `cp .env.example .env`
-4. Configura tu base de datos en el archivo `.env`
-5. Genera una clave de aplicación: `php artisan key:generate`
+3. Actualizar el proyecto para tener todos los archivos necesarios: `composer update`
+4. Copia el archivo de configuración de entorno: `cp .env.example .env`
+5. Configura tu base de datos en el archivo `.env`
 6. Ejecuta las migraciones: `php artisan migrate`
 7. Inicia el servidor: `php artisan serve`
 
-### Uso de la API
+# Uso de la API
 
-#### Jugadores
+## Jugadores
 
 - **Listar Jugadores**
   - Método: GET
@@ -64,7 +63,7 @@ El proyecto incluye las siguientes características:
   - Ruta: `/api/jugadores/{id}`
   - Descripción: Elimina un jugador según su ID.
 
-#### Juegos
+## Juegos
 
 - **Iniciar Juego**
   - Método: POST
@@ -81,7 +80,7 @@ El proyecto incluye las siguientes características:
   - Ruta: `/api/juegos/{id}/ganador`
   - Descripción: Determina el ganador de un juego específico según los movimientos realizados.
 
-#### Movimientos
+## Movimientos
 
 - **Listar Movimientos**
   - Método: GET
