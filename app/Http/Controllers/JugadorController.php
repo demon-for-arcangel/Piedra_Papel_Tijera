@@ -8,13 +8,12 @@ use App\Models\Jugador;
 class JugadorController extends Controller
 {
     public static function insertarJugador(Request $request){
+        
         $jugador = new Jugador();
 
         $jugador->id = $request->get('id');
         $jugador->nombre = $request->get('nombre');
         $jugador->password = $request->get('password');
-        $jugador->partidasJugadas = $request->get('partidasJugadas');
-        $jugador->partidasGanadas = $request->get('partidasGanadas');
         $jugador->rol = $request->get('rol');
 
         try {
@@ -35,7 +34,7 @@ class JugadorController extends Controller
         $jugador = Jugador::find($id);
 
         if ($jugador == null){
-            return response()->json("No existe el jugador que se busca.", 404);
+            return response()->json("No existe el jugador que se busca.", 400);
         }else{
             return response()->json($jugador, 200);
         }

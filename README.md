@@ -90,8 +90,7 @@ El proyecto incluye las siguientes características:
   ```json
     {
         "nombre": "NuevoJugador",
-        "partidasJugadas": 0,
-        "partidasGanadas": 0,
+        "password": "ejemplo",
         "rol": "jugador"
     }
   ```
