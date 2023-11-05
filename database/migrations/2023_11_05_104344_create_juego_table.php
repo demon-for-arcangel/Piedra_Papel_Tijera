@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('jugador_id')->nullable()->constrained('jugador');
             $table->boolean('ganada')->default(false);
+            $table->enum('movimiento', ['piedra', 'papel', 'tijera']);
             $table->timestamps();
         });
     }
