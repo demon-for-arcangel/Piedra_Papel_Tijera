@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jugador extends Model
 {
+    use HasFactory;
+
     protected $table = 'jugador';
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
+    public $timestamps = false;
+    protected $hidden = ['password'];
 
     public function movimientos(){
         return $this->hasMany(Movimiento::class);

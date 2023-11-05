@@ -22,18 +22,18 @@ use App\Http\Controllers\MovimientoController;
 }); */
 
 // Rutas de Jugador
-Route::get('/jugadores', [JugadorController::class, 'listaJugadores']);//Funciona
-Route::get('/jugadores/{id}', [JugadorController::class, 'encontrarJugador']);//sin comprobacion
-Route::post('/jugadores', [JugadorController::class, 'insertarJugador']);//No funciona
-Route::delete('/jugadores/{id}', [JugadorController::class, 'eliminarJugador']);//Sin comprobacion
+Route::get('/jugadores', [JugadorController::class, 'listaJugadores']);
+Route::get('/jugadores/{id}', [JugadorController::class, 'encontrarJugador']);
+Route::post('/jugadores', [JugadorController::class, 'insertarJugador']);
+Route::delete('/jugadores/{id}', [JugadorController::class, 'eliminarJugador']);
 
 // Rutas de Juego
-Route::post('/juegos', [JuegoController::class, 'iniciarJuego']);//sin comprobacion
-Route::post('/juegos/{id}/movimientos', [JuegoController::class, 'hacerMovimiento']);//sin comprobacion
-Route::get('/juegos/{id}/ganador', [JuegoController::class, 'determinarGanador']);//Sin comprobacion
+Route::post('/juegos', [JuegoController::class, 'iniciarJuego']);
+Route::post('/juegos/{id}/movimientos', [JuegoController::class, 'hacerMovimiento']);
+Route::get('/juegos/{id}/ganador', [JuegoController::class, 'determinarGanador']);
 
 // Rutas de Movimiento
-Route::get('/movimientos', function (){ //Funciona
+Route::get('/movimientos', function (){ 
     $movimientos = ['piedra', 'papel', 'tijera'];
     return response()->json($movimientos, 200);
 });

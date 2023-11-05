@@ -9,19 +9,21 @@ class JugadorController extends Controller
 {
     public static function insertarJugador(Request $request){
         
-        $jugador = new Jugador();
+        $jugador = new Jugador;
 
         $jugador->id = $request->get('id');
         $jugador->nombre = $request->get('nombre');
         $jugador->password = $request->get('password');
         $jugador->rol = $request->get('rol');
 
+        $mensaje = "Jugador insertado";
+
         try {
             $jugador->save();
-            return response()->json("Jugador insertado", 200);
         } catch (\Exception $e) {
-            return response()->json("No se ha podido insertar el jugador", 500);
+            $mensaje = "No se ha podido insertar el jugador";
         }
+        return response()->json(['mens' => $mensaje], 200);
     }
 
 
