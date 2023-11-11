@@ -1,66 +1,207 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Proyecto de Piedra, Papel o Tijera con Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Introducción
 
-## About Laravel
+Este proyecto consiste en una API desarrollada en PHP utilizando el framework Laravel para el juego de Piedra, Papel o Tijera. La API te permite jugar el juego de Piedra, Papel y Tijera contra la máquina.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+La API implementa la lógica básica de Piedra, Papel y Tijera.
+- Piedra gana contra Tijera.
+- Tijera gana contra Papel.
+- Papel gana contra Piedra.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Cuando se realiza un movimiento, la máquina también realiza su movimiento de forma aleatoria.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Protección de Rutas
+REVISIÓN
+La API utiliza un Middleware para verificar la autenticación del usuario antes de acceder a ciertas rutas.
 
-## Learning Laravel
+## Tecnologías Utilizadas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 7.4
+- Laravel 8
+- Composer (para la gestión de dependencias)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Estructura de la Base de Datos
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+El proyecto utiliza una base de datos MySQL con las siguientes tablas:
 
-## Laravel Sponsors
+- `jugadores`: Almacena la información de los jugadores, incluyendo su nombre, puntuación y otros detalles.
+- `juegos`: Registra la información de cada juego, incluyendo los jugadores involucrados y el resultado.
+- `movimientos`: Contiene los tipos de movimientos posibles en el juego (piedra, papel o tijera).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Funcionalidades Implementadas
 
-### Premium Partners
+El proyecto incluye las siguientes características:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- Inicio de Juegos
+- Realización de Movimientos
+- Determinación de Ganadores
+- Listado de Jugadores
+- Listado de Movimientos
+- Eliminación de Jugadores
 
-## Contributing
+## Cómo Ejecutar el Proyecto
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Clona el repositorio: `git clone https://github.com/demon-for-arcangel/Piedra_papel_tijera.git`
+2. Instala las dependencias: `composer install`
+3. Actualizar el proyecto para tener todos los archivos necesarios: `composer update`
+4. Copia el archivo de configuración de entorno: `cp .env.example .env`
+5. Configura tu base de datos en el archivo `.env`
+6. Ejecuta las migraciones: `php artisan migrate`
+7. Inicia el servidor: `php artisan serve`
 
-## Code of Conduct
+# Uso de la API
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Jugadores
 
-## Security Vulnerabilities
+- **Listar Jugadores**
+  - Método: GET
+  - Ruta: `/api/jugadores`
+  - Descripción: Obtiene una lista de todos los jugadores registrados.
+  - Ejemplo de respuesta JSON.
+  ```json
+    [
+        {
+            "id": 1,
+            "nombre": "Jugador1",
+            "partidasJugadas": 10,
+            "partidasGanadas": 5,
+            "rol": "jugador"
+        },
+        {
+            "id": 2,
+            "nombre": "Jugador2",
+            "partidasJugadas": 8,
+            "partidasGanadas": 3,
+            "rol": "jugador"
+        }
+        {
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+        }
+    ]
+  ```
 
-## License
+- **Obtener Jugador por ID**
+  - Método: GET
+  - Ruta: `/api/jugadores/{id}`
+  - Descripción: Obtiene información detallada de un jugador específico según su ID.
+  - Ejemplo de respuesta JSON.
+  ```json
+    {
+        "id": 1,
+        "nombre": "Jugador1",
+        "partidasJugadas": 10,
+        "partidasGanadas": 5,
+        "rol": "jugador"
+    }
+  ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Registrar Nuevo Jugador**
+  - Método: POST
+  - Ruta: `/api/jugadores`
+  - Descripción: Registra un nuevo jugador en la base de datos.
+  - Campos Requeridos: `nombre`, `password`, `rol`.
+  - Ejemplo de cuerpo de la solicitud JSON.
+  ```json
+    {
+        "nombre": "NuevoJugador",
+        "password": "ejemplo",
+        "rol": "jugador"
+    }
+  ```
+
+- **Actualizar Jugador**
+  - Método: PUT
+  - Ruta `/api/jugadores/{id}`
+  - Descripción: Actualiza la información de un jugador.
+  - Campos Requeridos: `nombre`, `password`, `rol`. 
+
+- **Eliminar Jugador**
+  - Método: DELETE
+  - Ruta: `/api/jugadores/{id}`
+  - Descripción: Elimina un jugador según su ID.
+  - No se requiere un cuerpo de solicitud JSON para esta acción. Tampoco nos dará una respuesta
+
+## Juegos
+
+- **Iniciar Juego**
+  - Método: POST
+  - Ruta: `/api/juegos`
+  - Descripción: Inicia un nuevo juego.
+  - Ejemplo de respuesta JSON.
+  ```json
+    {
+        "id": 1,
+        "jugador1_id": 1,
+        "jugador2_id": 2,
+        "ganador_id": null,
+        "created_at": "2023-11-05T12:34:56.000000Z",
+        "updated_at": "2023-11-05T12:34:56.000000Z"
+    }
+  ```
+
+- **Hacer Movimiento**
+  - Método: POST
+  - Ruta: `/api/juegos/movimientos`
+  - Descripción: Realiza un movimiento (piedra, papel o tijera) en un juego existente.
+  - Campos Requeridos: `jugador_id`, `movimiento` (piedra, papel o tijera).
+  - Ejemplo de cuerpo de la solicitud JSON.
+  ```json
+    {
+        "jugador_id": 1,
+        "movimiento": "papel"
+    }
+  ```
+  - Ejemplo de respuesta JSON.
+  ```json
+    {
+        "id": 1,
+        "juego_id": 1,
+        "jugador_id": 1,
+        "movimiento": "papel",
+        "created_at": "2023-11-05T13:45:12.000000Z",
+        "updated_at": "2023-11-05T13:45:12.000000Z"
+    }
+  ```
+
+- **Determinar Ganador**
+  - Método: GET
+  - Ruta: `/api/juegos/{id}/ganador`
+  - Descripción: Determina el ganador de un juego específico según los movimientos realizados.
+    - Ejemplo de respuesta JSON cuando el juego aun no tiene ganador.
+  ```json
+    {
+        "mensaje": "El juego aún no tiene un ganador"
+    }
+  ```
+  - Ejemplo de respuesta JSON cuando hay un ganador.
+  ```json
+    {
+        "ganador_id": 1,
+        "mensaje": "El Jugador 1 ha ganado el juego"
+    }
+  ```
+
+## Movimientos
+
+- **Listar Movimientos**
+  - Método: GET
+  - Ruta: `/api/movimientos`
+  - Descripción: Obtiene una lista de todos los movimientos disponibles (piedra, papel o tijera).
+  - Ejemplo de respuesta JSON.
+  ```json
+    [
+        {
+            "id": 1,
+            "nombre": "piedra"
+        },
+        {
+            "id": 2,
+            "nombre": "papel"
+        },
+        {
+            "id": 3,
+            "nombre": "tijera"
+        }
+    ]
+    ```

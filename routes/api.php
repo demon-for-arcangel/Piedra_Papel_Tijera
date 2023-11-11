@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JugadorController;
+use App\Http\Controllers\JuegoController;
+use App\Http\Controllers\MovimientoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,25 @@ use Illuminate\Support\Facades\Route;
 /* Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 }); */
+
+// Rutas de Jugador
+Route::get('/jugadores', [JugadorController::class, 'listaJugadores']);
+Route::get('/jugadores/{id}', [JugadorController::class, 'encontrarJugador']);
+Route::post('/jugadores', [JugadorController::class, 'insertarJugador']);
+Route::delete('/jugadores/{id}', [JugadorController::class, 'eliminarJugador']);
+
+// Rutas de Juego
+Route::post('/juegos', [JuegoController::class, 'iniciarJuego']);
+Route::post('/juegos/movimientos', [JuegoController::class, 'hacerMovimiento']);
+Route::get('/juegos/ganador', [JuegoController::class, 'determinarGanador']);
+
+// Rutas de Movimiento
+Route::get('/movimientos', function (){ 
+    $movimientos = ['piedra', 'papel', 'tijera'];
+    return response()->json($movimientos, 200);
+});
+
+//Middleware
+Route::middleware('auth.jugador')->group(function () {
+    Route::get('/perfil', [JugadorController::class, 'mostrarPerfil']);
+});

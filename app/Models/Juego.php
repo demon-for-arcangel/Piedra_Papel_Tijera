@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Juego extends Model
 {
-    use HasFactory;
+    public function ganador(){
+        return $this->belongsTo(Player::class, 'ganador_id');
+    }
+
+    public function movimientos(){
+        return $this->hasMany(Movimiento::class);
+    }
 }
